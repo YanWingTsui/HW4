@@ -1,68 +1,94 @@
-#include <stack>
-#include <iostream>
-#include <vector>
-#include <ctime>
-#include <chrono>
+#include "stack_llist.h"
 
-#include "node.h"
-#include "llist.h"
+namespace nodespace{
+	
+    void SList::push(const node::value_type& entry){
+		if(list_length == 0){
+			node* temp = new node(entry, NULL);
+			head_ptr = temp;
+			tail_ptr = temp;
+			list_length ++;
+		}
+		else if(list_length == 1){
+			node* temp = new node(entry, NULL);
+			head_ptr->set_link(temp);
+			tail_ptr = temp;
+			list_length ++;
+		}
+		else{
+			node* temp = new node(entry, NULL);
+			tail_ptr->set_link(temp);
+			tail_ptr = temp;
+			list_length ++;
+		}
+	};
 
-void n_queens(size_t n){
-        if(n == 3 || n == 2){
-                std::cout<<"there is not solution!"<<std::endl;
-                return;
-        }
-        nodespace::stacks queens;
-        size_t R = 1;
-        size_t C = 1;
-             for(size_t j = 1; j<row;j++){
-                        for(size_t i = 0; i+1<row ;){
-                                if(queens[i]->data() == column ||queens[i]->data() == column+row-i-1 ||queens[i]->data() == column-row+i+1){
-                                        if(column <= n){
-                                                column++;
-                                        }
-                                        if(column > n){
-                                                break;
-                                        }
-                                }
-                                else{
-                                        i++;
-                                }
-                        }
-                        if(column>n){
-                                break;
-                        }
-                }
-                if(column <= n){
-                        row++;
-                        queens.append(column);
-                        column = 1;
-                }
-                else if(column>n){
-                        row--;
-                        column = queens.stacks_top()->data()+1;
-                        if(row == 1){
-                                queens.stacks_pop();
-                                queens.append(column);
-                                column = 1;
-                                row++;
-                        }
-                        else{
-                                queens.stacks_pop();
-                        }
-                }
-        }
-        if(row > n){
-                std::cout<<"[";
-                for(size_t k = 0;k<n;k++){
-                        std::cout<<"("<<k+1<<","<<queens[k]->data()<<")";
-                }
-                std::cout<<"]"<<std::endl;
-        }
+        int SList::top()
+        {
+                if(list_length ==0)
+                        ewturn 0;
+                else
+                        return tail_ptr->data();
+        };         
         
+        void SList::pop
+        {
+                if(list_length <= 0)
+                        return;
+                else if(list_length ==1)
+                {
+                        node*temp = head_ptr;
+                        head_ptr = NULL;
+                        tail_ptr = NULL;
+                        delete temp;
+                        list length--;
+         }
+         else
+         {
+                node* pointer;
+                node* temp;
+                for(pointer = head_ptr; pointer != NULL; pointer = pointer -> link())
+                {
+                        temp = pointer->link();
+                        if(temp->link() == NULL)
+                        {
+                                pointer->set_link(NULL);
+                                tail_ptr = pointer;
+                                delete temp;
+                                list_length--;
+                                break;
+                         }
+                 }
+           }
+};
+        
+        const std::size_t SList::size()
+        {      
+               return list_length;
+        };
+        
+        void SList::Printing()
+        {
+                if(list_length == 0)
+                        std::cout<<"empty"<<std::endl;
+                else
+                {
+                        node* pointer;
+                        for(pointer = head_ptr; pointer != NULL; ponter->link())
+                        {
+                                std::cout<<pointer->data()<<std::endl;
+                        }
+                }
+        };
+        
+        bool SList::EMPTY()
+        {
+                if(list_length == 0)
+                        return true;
+                else
+                        return false;
+        }
 }
-
-int main(){
-       
-        return 0;
-}
+        
+        
+             
