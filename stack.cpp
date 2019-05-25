@@ -1,4 +1,4 @@
-#include "stack_llist.h"
+#include "stack.h"
 
 namespace nodespace{
 	
