@@ -1,18 +1,21 @@
+#include <stack>
 #include <iostream>
+#include <vector>
+#include <ctime>
+#include <chrono>
 
 #include "node.h"
 #include "llist.h"
 
 void n_queens(size_t n){
-        if(n == 2 || n == 3){
-                std::cout<<"No solution!"<<std::endl;
+        if(n == 3 || n == 2){
+                std::cout<<"there is not solution!"<<std::endl;
                 return;
         }
         nodespace::stacks queens;
-        size_t row = 1;
-        size_t column = 1;
-        for(;row<=n;){
-                for(size_t j = 1; j<row;j++){
+        size_t R = 1;
+        size_t C = 1;
+             for(size_t j = 1; j<row;j++){
                         for(size_t i = 0; i+1<row ;){
                                 if(queens[i]->data() == column ||queens[i]->data() == column+row-i-1 ||queens[i]->data() == column-row+i+1){
                                         if(column <= n){
@@ -60,30 +63,6 @@ void n_queens(size_t n){
 }
 
 int main(){
-        //node* tail = new node(1.0);
-        //node* second = new node(2.0, tail);
-        //node* third = new node(3.0, second);
-        //nodespace::node A(2);
-        //A = 5;
-        //std::cout<<A.data()<<std::endl;
-        /*
-        nodespace::LList mylist;
-        mylist.append(47);
-        mylist.append(20);
-        mylist.append(45);
-        mylist.append(47);
-        mylist.append(416);
-        mylist.append(47);
-        frequency(mylist);
-        */
-        //mylist.insert(3,7);
-        //std::cout<<mylist.search(7)->data()<<std::endl;
-        //std::cout<<mylist.locate(5)->data()<<std::endl;
-        //std::cout<<mylist.remove(4)<<std::endl;
-        //mylist.clear();
-        //nodespace::LList newlist;
-        //newlist = mylist.copy();
-        //mylist.clear();
-        // Frequency left to implement
+       
         return 0;
 }
